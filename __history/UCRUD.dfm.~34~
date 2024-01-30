@@ -1,0 +1,248 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 299
+  ClientWidth = 635
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ControlPages: TPageControl
+    Left = 0
+    Top = 0
+    Width = 635
+    Height = 299
+    ActivePage = pagina2
+    Align = alClient
+    TabOrder = 0
+    object pagina1: TTabSheet
+      Caption = 'pagina1'
+      object ListBox1: TListBox
+        Left = 0
+        Top = 41
+        Width = 627
+        Height = 225
+        Align = alClient
+        BevelWidth = 2
+        IntegralHeight = True
+        ItemHeight = 13
+        Items.Strings = (
+          'Juan'
+          'Martin')
+        TabOrder = 0
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 627
+        Height = 41
+        Align = alTop
+        Caption = 'Panel1'
+        Color = clGradientInactiveCaption
+        ParentBackground = False
+        TabOrder = 1
+        object Button1: TButton
+          Left = 551
+          Top = 1
+          Width = 75
+          Height = 39
+          Align = alRight
+          Caption = 'Button1'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+      end
+    end
+    object pagina2: TTabSheet
+      Caption = 'pagina2'
+      ImageIndex = 1
+      object Genero: TLabel
+        Left = 184
+        Top = 80
+        Width = 35
+        Height = 13
+        Caption = 'Genero'
+      end
+      object LabeledEditApellido: TLabeledEdit
+        Left = 176
+        Top = 72
+        Width = 121
+        Height = 21
+        EditLabel.Width = 37
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Apellido'
+        TabOrder = 0
+        Text = 'Alferez'
+      end
+      object LabeledEditNombre: TLabeledEdit
+        Left = 24
+        Top = 72
+        Width = 121
+        Height = 21
+        EditLabel.Width = 37
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Nombre'
+        TabOrder = 1
+        Text = 'Juan'
+      end
+      object LabeledEditTelefono: TLabeledEdit
+        Left = 24
+        Top = 120
+        Width = 121
+        Height = 21
+        EditLabel.Width = 42
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Telefono'
+        TabOrder = 2
+        Text = '31720649'
+      end
+      object Registrar: TButton
+        Left = 0
+        Top = 246
+        Width = 627
+        Height = 25
+        Align = alBottom
+        Caption = 'Registrar'
+        TabOrder = 3
+        OnClick = RegistrarClick
+      end
+      object ComboBoxGenero: TComboBox
+        Left = 176
+        Top = 120
+        Width = 145
+        Height = 21
+        ItemIndex = 0
+        TabOrder = 4
+        Text = 'Masculino'
+        Items.Strings = (
+          'Masculino'
+          'Femenino')
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 627
+        Height = 41
+        Align = alTop
+        Alignment = taLeftJustify
+        Color = clGradientInactiveCaption
+        ParentBackground = False
+        TabOrder = 5
+        ExplicitLeft = 224
+        ExplicitTop = -8
+        ExplicitWidth = 185
+        object btnCancel: TButton
+          Left = 551
+          Top = 1
+          Width = 75
+          Height = 39
+          Align = alRight
+          Caption = 'Cancelar'
+          TabOrder = 0
+          OnClick = btnCancelClick
+          ExplicitLeft = 536
+          ExplicitTop = 0
+          ExplicitHeight = 25
+        end
+      end
+    end
+  end
+  object DatatestConnection: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=DataTest')
+    Connected = True
+    LoginPrompt = False
+    Left = 588
+    Top = 205
+  end
+  object ClienteTable: TFDQuery
+    Active = True
+    Connection = DatatestConnection
+    SQL.Strings = (
+      'SELECT * FROM Cliente')
+    Left = 586
+    Top = 255
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = ClienteTable
+    ScopeMappings = <>
+    Left = 472
+    Top = 152
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 588
+    Top = 157
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'Nombre'
+      Control = ListBox1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'Telefono'
+      Control = LabeledEditTelefono
+      Track = True
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'Nombre'
+      Control = LabeledEditNombre
+      Track = True
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'Apellido'
+      Control = LabeledEditApellido
+      Track = True
+    end
+  end
+  object FDQueryDelete: TFDQuery
+    Connection = DatatestConnection
+    SQL.Strings = (
+      'DELETE from Cliente where id = :pid')
+    Left = 476
+    Top = 208
+    ParamData = <
+      item
+        Name = 'PID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object FDQueryUpdate: TFDQuery
+    Connection = DatatestConnection
+    SQL.Strings = (
+      'UPDATE Cliente set completed = :pcom where id = :pid')
+    Left = 476
+    Top = 256
+    ParamData = <
+      item
+        Name = 'PCOM'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+end
