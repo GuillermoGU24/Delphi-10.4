@@ -23,7 +23,6 @@ type
     DatatestConnection: TFDConnection;
     ClienteTable: TFDQuery;
     BindSourceDB1: TBindSourceDB;
-    Panel1: TPanel;
     Button1: TButton;
     LabeledEditApellido: TLabeledEdit;
     LabeledEditNombre: TLabeledEdit;

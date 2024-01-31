@@ -18,18 +18,17 @@ object Form1: TForm1
     Top = 0
     Width = 635
     Height = 299
-    ActivePage = pagina2
+    ActivePage = pagina1
     Align = alClient
     TabOrder = 0
     object pagina1: TTabSheet
       Caption = 'pagina1'
-      object Panel1: TPanel
+      object TPanel
         Left = 0
         Top = 0
         Width = 627
         Height = 41
         Align = alTop
-        Caption = 'Panel1'
         Color = clGradientInactiveCaption
         ParentBackground = False
         TabOrder = 0
@@ -53,9 +52,12 @@ object Form1: TForm1
         Align = alClient
         Columns = <>
         Items.ItemData = {
-          05440000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+          05B40000000500000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
           0004500065007000650000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0200
-          0000044A00550061006E00}
+          0000044A00550061006E0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF03
+          000000064D0061007200740069006E0000000000FFFFFFFFFFFFFFFF00000000
+          FFFFFFFF040000000750006900730074006F006C00610000000000FFFFFFFFFF
+          FFFFFF00000000FFFFFFFF05000000045900650073006900}
         TabOrder = 1
         ExplicitLeft = 216
         ExplicitTop = 118
@@ -142,8 +144,9 @@ object Form1: TForm1
         Top = 120
         Width = 121
         Height = 21
+        ItemIndex = 0
         TabOrder = 5
-        Text = 'Maculino'
+        Text = 'Masculino'
         Items.Strings = (
           'Masculino'
           'Femenino')

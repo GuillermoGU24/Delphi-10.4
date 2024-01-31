@@ -16,13 +16,10 @@ Visible=True
 Coordinates=107,10,60,36
 
 []
-Coordinates=1300,440,120,124
+Coordinates=40,0,55,58
 
 [BindSourceDB1]
 Coordinates=998,40,106,204
-
-[Panel1]
-Coordinates=40,0,55,58
 
 [Button1]
 Coordinates=50,80,59,58
