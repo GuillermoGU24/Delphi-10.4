@@ -33,7 +33,6 @@ type
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
     LinkControlToField4: TLinkControlToField;
-    ComboBoxGenero: TComboBox;
     Genero: TLabel;
     Panel2: TPanel;
     btnCancel: TButton;
@@ -41,11 +40,11 @@ type
     FDQueryUpdate: TFDQuery;
     ListView1: TListView;
     LinkListControlToField2: TLinkListControlToField;
-    Button2: TButton;
+    ComboBoxGenero: TComboBox;
+    LinkFillControlToField1: TLinkFillControlToField;
     procedure RegistrarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
-    procedure ListView1Deletion(Sender: TObject; Item: TListItem);
   private
     { Private declarations }
   public
@@ -61,7 +60,9 @@ implementation
 
 procedure TForm1.btnCancelClick(Sender: TObject);
 begin
-  ClienteTable.Close;
+  if ClienteTable.State in [dsEdit, dsInsert] then
+    ClienteTable.Cancel;
+
   ControlPages.ActivePage := pagina1;
 end;
 
@@ -71,21 +72,6 @@ begin
   ControlPages.ActivePage := pagina2;
 end;
 
-procedure TForm1.ListView1Deletion(Sender: TObject; Item: TListItem);
-begin
-  try
-    FDQueryDelete.ParamByName('pid').AsInteger := ClienteTable.FieldByName('id')
-      .AsInteger;
-    FDQueryDelete.ExecSQL;
-
-  except
-    on e: Exception do
-    begin
-      ShowMessage(e.Message);
-    end;
-
-  end;
-end;
 
 procedure TForm1.RegistrarClick(Sender: TObject);
 begin

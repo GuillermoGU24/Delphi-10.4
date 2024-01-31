@@ -18,7 +18,7 @@ object Form1: TForm1
     Top = 0
     Width = 635
     Height = 299
-    ActivePage = pagina1
+    ActivePage = pagina2
     Align = alClient
     TabOrder = 0
     object pagina1: TTabSheet
@@ -53,10 +53,10 @@ object Form1: TForm1
         Align = alClient
         Columns = <>
         Items.ItemData = {
-          05220000000100000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-          00045000650070006500}
+          05440000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+          0004500065007000650000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0200
+          0000044A00550061006E00}
         TabOrder = 1
-        OnDeletion = ListView1Deletion
         ExplicitLeft = 216
         ExplicitTop = 118
         ExplicitWidth = 250
@@ -116,18 +116,6 @@ object Form1: TForm1
         TabOrder = 3
         OnClick = RegistrarClick
       end
-      object ComboBoxGenero: TComboBox
-        Left = 176
-        Top = 120
-        Width = 145
-        Height = 21
-        ItemIndex = 0
-        TabOrder = 4
-        Text = 'Masculino'
-        Items.Strings = (
-          'Masculino'
-          'Femenino')
-      end
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -137,7 +125,7 @@ object Form1: TForm1
         Alignment = taLeftJustify
         Color = clGradientInactiveCaption
         ParentBackground = False
-        TabOrder = 5
+        TabOrder = 4
         object btnCancel: TButton
           Left = 551
           Top = 1
@@ -148,15 +136,17 @@ object Form1: TForm1
           TabOrder = 0
           OnClick = btnCancelClick
         end
-        object Button2: TButton
-          Left = 476
-          Top = 1
-          Width = 75
-          Height = 39
-          Align = alRight
-          Caption = 'Delete'
-          TabOrder = 1
-        end
+      end
+      object ComboBoxGenero: TComboBox
+        Left = 176
+        Top = 120
+        Width = 121
+        Height = 21
+        TabOrder = 5
+        Text = 'Maculino'
+        Items.Strings = (
+          'Masculino'
+          'Femenino')
       end
     end
   end
@@ -217,13 +207,24 @@ object Form1: TForm1
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'Genero'
+      Control = ComboBoxGenero
+      Track = True
+      AutoFill = True
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
   end
   object FDQueryDelete: TFDQuery
     Connection = DatatestConnection
     SQL.Strings = (
       'DELETE from Cliente where id = :pid')
-    Left = 476
-    Top = 208
+    Left = 468
+    Top = 200
     ParamData = <
       item
         Name = 'PID'
@@ -236,7 +237,7 @@ object Form1: TForm1
     Connection = DatatestConnection
     SQL.Strings = (
       'UPDATE Cliente set completed = :pcom where id = :pid')
-    Left = 476
+    Left = 468
     Top = 256
     ParamData = <
       item

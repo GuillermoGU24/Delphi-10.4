@@ -1,0 +1,27 @@
+# Directorios
+__history
+__recovery
+Win32
+Win64
+lib
+backup
+
+# Archivos particulares
+desktop.ini
+
+# Tipos de Archivos
+*.dcr
+*.dsk
+*.identcache
+*.local
+*.dres
+*.res
+*.exe
+*.~dsk
+*.dcu
+*.stat
+*.rar
+*.blend1
+*.blend2
+*.lps
+*.lyx~
